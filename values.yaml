@@ -1,0 +1,10 @@
+image:
+  repository: docker.io/guscontre1/ocp-dog-frontend
+  tag: "3"
+
+service:
+  port: 80
+  targetPort: 8080
+
+config:
+  FRONTEND_API_URL: http://ocp-dog-frontend-api:5001/dog
