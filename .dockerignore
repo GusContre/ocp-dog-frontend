@@ -1,0 +1,10 @@
+.git
+.github
+.gitignore
+Dockerfile
+node_modules
+npm-debug.log
+yarn-error.log
+.vscode
+.idea
+*.md
