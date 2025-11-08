@@ -27,14 +27,20 @@
       }
 
       const payload = await response.json();
-      if (!payload || !payload.image) {
-        throw new Error('La respuesta no contiene una imagen');
+      if (payload && payload.image) {
+        image.src = payload.image;
+        image.style.display = 'block';
+        image.alt = payload.description || payload.name || 'Perro feliz';
+        status.textContent = payload.name ? `Nombre: ${payload.name}` : 'Aquí tienes un nuevo amigo 🐕';
+      } else if (payload && payload.name) {
+        image.style.display = 'none';
+        status.textContent = `Nombre de perro: ${payload.name}`;
+      } else if (payload && payload.status === 'empty') {
+        image.style.display = 'none';
+        status.textContent = 'No hay perros en la base. Inserta uno con el endpoint /save.';
+      } else {
+        throw new Error('Respuesta inesperada de la API');
       }
-
-      image.src = payload.image;
-      image.style.display = 'block';
-      image.alt = payload.description || 'Perro feliz';
-      status.textContent = 'Aquí tienes un nuevo amigo 🐕';
     } catch (error) {
       console.error('Error al obtener el perro', error);
       image.style.display = 'none';
