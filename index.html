@@ -87,6 +87,44 @@
         font-weight: 600;
         color: #5c6f82;
       }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+        margin-top: 2rem;
+        text-align: left;
+      }
+
+      label {
+        font-size: 0.9rem;
+        color: #354254;
+      }
+
+      input {
+        width: 100%;
+        padding: 0.65rem 0.8rem;
+        border: 1px solid #d5dcec;
+        border-radius: 8px;
+        font-size: 0.95rem;
+      }
+
+      .form-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+        text-align: center;
+      }
+
+      .form-actions button {
+        margin: 0;
+      }
+
+      .helper {
+        font-size: 0.85rem;
+        color: #5c6f82;
+        min-height: 1.5rem;
+      }
     </style>
   </head>
   <body>
@@ -98,6 +136,20 @@
         <img id="dog-image" alt="Imagen de un perro" />
         <p id="status">Presiona el botón para ver un perro</p>
       </div>
+      <form id="save-form">
+        <div>
+          <label for="dog-name">Nombre (opcional)</label>
+          <input id="dog-name" type="text" placeholder="Ej: Rocky" autocomplete="off" />
+        </div>
+        <div>
+          <label for="dog-image-url">URL de imagen (opcional)</label>
+          <input id="dog-image-url" type="url" placeholder="https://..." autocomplete="off" />
+        </div>
+        <div class="form-actions">
+          <button type="submit" id="save-button">Guardar perro</button>
+          <p class="helper" id="save-status"></p>
+        </div>
+      </form>
     </main>
     <script src="env-config.js"></script>
     <script src="app.js"></script>
